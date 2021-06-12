@@ -66,12 +66,18 @@ union setPosSerialized{
     uint8_t bytes[sizeof(setPos)];
     setPos values;
 };
+#define CMD_STARTDATA 1
+#define CMD_CALIBRATION 2
+#define CMD_UPDATE 3
+#define CMD_SETPOS 4
 struct __attribute__((__packed__)) expect{
     uint32_t bytes;
+    uint8_t cmd;
 };
 union expectSerialized{
     uint8_t bytes[sizeof(expect)];
     expect value;
+    
 };
 #endif
 

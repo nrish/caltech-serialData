@@ -56,5 +56,15 @@ union updateDataSerialized{
     updateData values;
 };
 
+struct __attribute__((__packed__)) setPos{
+    uint32_t x;
+    uint32_t y;
+    bool speed;
+    bool home;
+};
+union setPosSerialized{
+    uint8_t bytes[sizeof(setPos)];
+    setPos values;
+};
 
 #endif

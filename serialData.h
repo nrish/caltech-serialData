@@ -16,14 +16,13 @@ struct __attribute__((__packed__)) Tray{
 
 //initalization data, required to start machine
 struct __attribute__((__packed__)) StartData{
-    uint8_t start_mode; //start mode can be 0 or 1 respectively normal run and calibration
     uint32_t mills; //ms/w
     uint8_t endWellIndex;
     uint8_t trayIndex;
 };
 
 union StartDataSerialized{
-    StartData startData;
+    StartData values;
     uint8_t bytes[sizeof(StartData)];
 };
 
@@ -73,6 +72,7 @@ union setPosSerialized{
 struct __attribute__((__packed__)) expect{
     uint32_t bytes;
     uint8_t cmd;
+    bool request;
 };
 union expectSerialized{
     uint8_t bytes[sizeof(expect)];

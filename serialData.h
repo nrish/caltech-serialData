@@ -66,6 +66,8 @@ union setPosSerialized{
     uint8_t bytes[sizeof(setPos)];
     setPos values;
 };
-
+struct __attribute__((__packed__)) expect{
+    uint32_t bytes;
+};
 #endif
 

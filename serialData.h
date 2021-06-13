@@ -111,7 +111,7 @@ union __attribute__((__packed__)) expectSerialized{
     expectSerialized(expect v) : values(v){}
     uint8_t bytes[sizeof(expect)];
     expect values;
-    
+
 };
 #endif
 

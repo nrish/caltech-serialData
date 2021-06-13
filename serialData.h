@@ -5,11 +5,10 @@
 #define CMD_CALIBRATION 2
 #define CMD_UPDATE 3
 #define CMD_SETPOS 4
+#define DEBUG_MSG
 
+#if  defined(__linux__) | defined( __MINGW32__)
 #include<stdint.h>
-
-#ifdef __linux__
-
 #endif
 /*
  * this file contains all the structures and unions required to easily serialize data and send it accross the serial port or write to EEPROM.
@@ -92,7 +91,17 @@ union __attribute__((__packed__)) setPosSerialized{
 
 struct __attribute__((__packed__)) expect{
     expect(){}
-    expect(uint32_t b, uint8_t c, bool r) : bytes(b), cmd(c), request(r) {}
+    expect(uint32_t c, bool r) : cmd(c), request(r) {
+        if(cmd == CMD_CALIBRATION)
+            bytes = sizeof(CalibrationValues);
+        if(cmd == CMD_SETPOS)
+            bytes = sizeof(setPos);
+        if(cmd == CMD_STARTDATA)
+            bytes = sizeof(StartData);
+        if(cmd == CMD_UPDATE)
+            bytes = sizeof(updateData);
+    };
+    expect(uint32_t c, uint32_t b, bool r) : bytes(b), cmd(c), request(r){};
     uint32_t bytes;
     uint8_t cmd;
     bool request;

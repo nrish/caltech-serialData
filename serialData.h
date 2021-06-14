@@ -91,7 +91,7 @@ union __attribute__((__packed__)) setPosSerialized{
 
 struct __attribute__((__packed__)) expect{
     expect(){}
-    expect(uint32_t c, bool r) : cmd(c), request(r) {
+    expect(uint8_t c, bool r) : cmd(c), request(r) {
         if(cmd == CMD_CALIBRATION)
             bytes = sizeof(CalibrationValues);
         if(cmd == CMD_SETPOS)
@@ -101,7 +101,7 @@ struct __attribute__((__packed__)) expect{
         if(cmd == CMD_UPDATE)
             bytes = sizeof(updateData);
     };
-    expect(uint32_t c, uint32_t b, bool r) : bytes(b), cmd(c), request(r){};
+    expect(uint8_t c, uint32_t b, bool r) : bytes(b), cmd(c), request(r){};
     uint32_t bytes;
     uint8_t cmd;
     bool request;

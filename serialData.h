@@ -5,7 +5,7 @@
 #define CMD_CALIBRATION 2
 #define CMD_UPDATE 3
 #define CMD_SETPOS 4
-#define DEBUG_MSG
+#define DEBUG_MSG 5
 
 #if  defined(__linux__) | defined( __MINGW32__)
 #include<stdint.h>

@@ -50,7 +50,7 @@ struct __attribute__((__packed__)) CalibrationValues{
     bool Y_END_DIR;
     bool X_END_DIR;
     //positions of the 8 trays on machine
-    Tray trays[8];
+    Tray trays[10];
 };
 union __attribute__((__packed__))  CalibrationValueSerialized{
     CalibrationValueSerialized(){}

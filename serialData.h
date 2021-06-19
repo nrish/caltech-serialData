@@ -16,9 +16,9 @@
 //tray position
 struct __attribute__((__packed__)) Tray{
     Tray(){}
-    Tray(uint32_t x_in, uint32_t y_in) : x(x_in), y(y_in){};
-    int32_t x; // index 0
-    int32_t y; // index 1
+    Tray(int16_t x_in, int16_t y_in) : x(x_in), y(y_in){};
+    int16_t x; // index 0
+    int16_t y; // index 1
 };
 
 //initalization data, required to start machine
@@ -76,9 +76,9 @@ union __attribute__((__packed__))  updateDataSerialized{
 
 struct __attribute__((__packed__)) setPos{
     setPos(){}
-    setPos(uint32_t x, uint32_t y, bool s, bool h) : x(x), y(y), speed(s), home(h){}
-    uint32_t x;
-    uint32_t y;
+    setPos(uint16_t x, uint16_t y, bool s, bool h) : x(x), y(y), speed(s), home(h){}
+    uint16_t x;
+    uint16_t y;
     bool speed;
     bool home;
 };
